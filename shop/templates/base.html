@@ -1,10 +1,21 @@
 <!DOCTYPE html>
-<html lang="en">
+
+<html lang="en-us">
 <head>
-  <meta charset="UTF-8">
-  <title>$Title$</title>
+    {% block title %}<title>Shop</title>{% endblock %}
 </head>
 <body>
-$END$
+<div>
+    {% block sidebar %}
+        {% for category in categories %}
+            <li>
+                <a href="">category</a>
+            </li>
+        {% endfor %}
+    {% endblock %}
+</div>
+<div>
+    {% block content %} {% endblock %}
+</div>
 </body>
 </html>
