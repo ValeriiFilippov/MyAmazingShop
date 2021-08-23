@@ -2,12 +2,12 @@ from django.urls import path
 from django.conf.urls import url
 from shop import views
 
+#
+# urlpatterns = [
+#     path("", views.index, name='index'),
+# ]
 
 urlpatterns = [
-    path("", views.index, name='index'),
-]
-
-urlpatterns += [
     url(r'^$', views.product_list, name='product_list'),
     url(r'^(?P<category_slug>[-\w]+)/$',
         views.product_list,
@@ -16,3 +16,6 @@ urlpatterns += [
         views.product_detail,
         name='product_detail'),
 ]
+
+
+

@@ -24,13 +24,3 @@ def product_detail(request, id, slug):
     return render(request,
                   'shop/product/detail.html',
                   {'product': product})
-
-
-def index(request):
-    categories = Category.objects.all()
-
-    context = {
-        "categories": categories
-    }
-
-    return render(request, "index.html", context=context)

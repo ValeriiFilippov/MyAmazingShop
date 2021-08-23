@@ -25,7 +25,9 @@ class ProductAdmin(admin.ModelAdmin):
         "update_date",
     ]
     fieldsets = ((None, {"fields": ("name",
+                                    "category",
                                     "price",
+                                    "image",
                                     "available",
                                     "description")}),
                  ('Slug', {"fields": ("slug",)})
