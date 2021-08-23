@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'shop',
+    'cart',
 ]
 
 MIDDLEWARE = [
@@ -129,4 +130,4 @@ MEDIA_ROOT = Path.joinpath(BASE_DIR, 'media/')
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-
+SESSION_ID_CART = 'cart'
