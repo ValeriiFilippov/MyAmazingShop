@@ -1,12 +1,9 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Category, Product
+from cart.forms import CartAddProductForm
 
 
 def product_list(request, category_slug=None):
-    request.session["id"]
-    request.session.get("id", "1")
-    request.session["id"]
-    request.session["someinfo"] = "dsfdjas"
     category = None
     categories = Category.objects.all()
     products = Product.objects.filter(available=True)
@@ -27,6 +24,8 @@ def product_detail(request, id, slug):
                                 slug=slug,
                                 available=True)
 
-    context = {'product': product}
+    cart_form = CartAddProductForm()
+    context = {'product': product,
+               'cart_product_form': cart_form}
 
     return render(request, 'shop/product/detail.html', context=context)
