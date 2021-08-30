@@ -23,8 +23,8 @@ from shop.views import RegisterFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('shop/register', RegisterFormView.as_view(), name='register'),
-    path('accounts/', include('django.contrib.auth.urls')),
+    path('register/', RegisterFormView.as_view(), name='register'),
+    path('', include('django.contrib.auth.urls')),
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path('shop/', include(('shop.urls', 'shop'), namespace='shop')),
     path('', RedirectView.as_view(url='/shop/', permanent=True)),
