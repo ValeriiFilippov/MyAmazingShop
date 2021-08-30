@@ -19,9 +19,11 @@ from django.conf.urls import include, url
 from django.views.generic import RedirectView
 from django.conf import settings
 from django.conf.urls.static import static
+from shop.views import RegisterFormView
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('shop/register', RegisterFormView.as_view(), name='register'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path('shop/', include(('shop.urls', 'shop'), namespace='shop')),

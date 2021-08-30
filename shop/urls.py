@@ -4,6 +4,7 @@ from shop import views
 from .views_example import ProductCreate, ProductUpdate, ProductDelete
 
 urlpatterns = [
+    url(r'^register/$', views.RegisterFormView.as_view()),
     url(r'^$', views.product_list, name='product_list'),
     url(r'^(?P<category_slug>[-\w]+)/$',
         views.product_list,

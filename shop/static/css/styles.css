@@ -124,7 +124,7 @@ ul.errorlist {
 
 #subheader {
     background:#ececec;
-    color:#444;
+    /*color:#444;*/
     padding:15px 100px;
     overflow:auto;
 }
