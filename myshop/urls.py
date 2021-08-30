@@ -21,9 +21,10 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path("admin/", admin.site.urls),
-    path("cart/", include(("cart.urls", "cart"), namespace="cart")),
-    path("shop/", include(("shop.urls", "shop"), namespace='shop')),
+    path('admin/', admin.site.urls),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
+    path('shop/', include(('shop.urls', 'shop'), namespace='shop')),
     path('', RedirectView.as_view(url='/shop/', permanent=True)),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
