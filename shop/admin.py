@@ -1,6 +1,6 @@
 from django.contrib import admin
 from shop.models import Category, Product
-
+from .models import Post, Comment
 
 class ProductInline(admin.TabularInline):
     model = Product
@@ -27,7 +27,7 @@ class ProductAdmin(admin.ModelAdmin):
     fieldsets = ((None, {"fields": ("name",
                                     "category",
                                     "price",
-                                    "image",
+                                    #"image",
                                     "available",
                                     "description")}),
                  ('Slug', {"fields": ("slug",)})
@@ -35,3 +35,12 @@ class ProductAdmin(admin.ModelAdmin):
 
     list_filter = ["available", "create_date"]
     prepopulated_fields = {"slug": ("name",)}
+
+
+
+
+# class CommentAdmin(admin.ModelAdmin):
+#     list_display = ('name', 'email', 'post', 'created', 'active')
+#     list_filter = ('active', 'created', 'updated')
+#     search_fields = ('name', 'email', 'body')
+# admin.site.register(Comment, CommentAdmin)

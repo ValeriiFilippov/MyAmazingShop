@@ -19,3 +19,4 @@ urlpatterns += [
     url(r'^product/(?P<pk>\d+)/update/$', ProductUpdate.as_view(), name='product_update'),
     url(r'^product/(?P<pk>\d+)/delete/$', ProductDelete.as_view(), name='product_delete'),
 ]
+
