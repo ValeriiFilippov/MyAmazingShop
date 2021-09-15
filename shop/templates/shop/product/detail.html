@@ -17,4 +17,34 @@
             <input type="submit" value="Add to cart">
         </form>
     </div>
+    <div>
+        {% with comments.count as c %}
+            <h2>
+                {{ c }}comments
+            </h2>
+        {% endwith %}
+    </div>
+    <div>
+        {% for comment in comments %}
+            <div class="comment">
+                <p> comment by {{ comment.name }} </p>
+                {{ comment.text }}
+            </div>
+            {% empty %}
+            <p> there are no comments </p>
+
+        {% endfor %}
+    </div>
+    <h2> Add comment </h2>
+    <div>
+        {% if comment_added %}
+            <p> Your comment added </p>
+        {% else %}
+            <form method="post">
+                {% csrf_token %}
+                {{ comment_form.as_p }}
+                <p><input type="submit" value="Add comment"></p>
+            </form>
+        {% endif %}
+    </div>
 {% endblock %}

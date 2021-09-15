@@ -1,6 +1,6 @@
 from django import forms
 
-PRODUCT_CHOICES_COUNT = [(i, str(i)) for i in range(10)]
+PRODUCT_CHOICES_COUNT = [(i, str(i)) for i in range(1, 10)]
 
 
 class CartAddProductForm(forms.Form):

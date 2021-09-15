@@ -26,8 +26,8 @@ class Product(models.Model):
         on_delete=models.CASCADE
     )
     name = models.CharField(max_length=200, db_index=True)
-    #image = models.ImageField(upload_to="products/%Y/%m/%d", blank=True)
-    #thumbnail = models.ImageField(upload_to="products/%Y/%m/%d", blank=True, null=True)
+    image = models.ImageField(upload_to="products/%Y/%m/%d", blank=True)
+    thumbnail = models.ImageField(upload_to="products/%Y/%m/%d", blank=True, null=True)
     slug = models.SlugField(max_length=100, db_index=True)
     description = models.TextField(blank=True)
     price = models.DecimalField(max_digits=20, decimal_places=2)
@@ -46,17 +46,22 @@ class Product(models.Model):
         return self.name
 
 
-# class Comment(models.Model):
-#     post = models.ForeignKey(Post, related_name='comments')
-#     name = models.CharField(max_length=80)
-#     email = models.EmailField()
-#     body = models.TextField()
-#     created = models.DateTimeField(auto_now_add=True)
-#     updated = models.DateTimeField(auto_now=True)
-#     active = models.BooleanField(default=True)
-#
-#     class Meta:
-#         ordering = ('created',)
-#
-#     def __str__(self):
-#         return 'Comment by {} on {}'.format(self.name, self.post)
+class Comment(models.Model):
+    product = models.ForeignKey(Product, related_name="comments", on_delete=models.CASCADE,)
+    name = models.CharField(max_length=200)
+    approved = models.BooleanField(default=True)
+    email = models.EmailField()
+    text = models.TextField()
+    created = models.DateTimeField(auto_now_add=True)
+    update_date = models.DateTimeField(auto_now=True)
+    active = models.BooleanField(default=True)
+
+    class Meta:
+        ordering = ('update_date',)
+
+    def approve(self):
+        self.approved = True
+        self.save()
+
+    def __str__(self):
+        return self.text
