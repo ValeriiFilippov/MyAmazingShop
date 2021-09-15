@@ -22,11 +22,12 @@ from django.conf.urls.static import static
 from shop.views import RegisterFormView
 
 urlpatterns = [
+    path('orders/', include(('orders.urls', 'orders'), namespace='orders')),
     path('admin/', admin.site.urls),
-    path('register/', RegisterFormView.as_view(), name='register'),
-    path('', include('django.contrib.auth.urls')),
     path('cart/', include(('cart.urls', 'cart'), namespace='cart')),
     path('shop/', include(('shop.urls', 'shop'), namespace='shop')),
+    path('authorization/', include(('authorization.urls', 'authorization'), namespace='authorization')),
+    path('', include('django.contrib.auth.urls')),
     path('', RedirectView.as_view(url='/shop/', permanent=True)),
 ]
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
